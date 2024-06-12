@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.flex{display: flex}
+.center{justify-content: center;}
+.between{justify-content: space-between;}
+.around{justify-content: space-around;}
+
+.view-size{width: 980px; margin: 0 auto;}
+
