@@ -12,7 +12,7 @@ class Web240612JpaMybtis01ApplicationTests {
 	
 	@Autowired
 	NoticeEntityRepository noRep;
-	@Test
+	//@Test
 	void contextLoads() {
 		noRep.save(NoticeEntity.builder()
 				.title("전체 제목테스트4")

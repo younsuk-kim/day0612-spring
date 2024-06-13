@@ -2,6 +2,7 @@ package com.green.domain.entity;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.green.domain.dto.NoticeDetailDTO;
 import com.green.domain.dto.NoticeListDTO;
 
 import jakarta.persistence.Column;
@@ -42,6 +43,13 @@ public class NoticeEntity extends BaseEntity {
 	private String division;	//구분-"전체","영화관"
 	private boolean fixed;		//고정여부
 	
+	//조회수 증가시키는 편의메소드
+	public NoticeEntity incrementReadcount() {
+		readCount++;
+		return this;
+	}
+	
+	
 	//편의메소드 매핑하기위한 메소드
 	public NoticeListDTO toNoticeListDTO() {
 		return NoticeListDTO.builder()
@@ -49,6 +57,18 @@ public class NoticeEntity extends BaseEntity {
 				.title(title)
 				.division(division)
 				.fixed(fixed)
+				.updatedAt(updatedAt)
+				.build();
+	}
+	
+	public NoticeDetailDTO toNoticeDetailDTO() {
+		return NoticeDetailDTO.builder()
+				.no(no)
+				.title(title)
+				.content(content)
+				.division(division)
+				.readCount(readCount)
+				.createdAt(createdAt)
 				.updatedAt(updatedAt)
 				.build();
 	}

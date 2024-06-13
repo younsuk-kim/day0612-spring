@@ -1,32 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{views/commons/layout :: layout( ~{::main}, ~{::head}) }">
 <head>
-	<link rel="stylesheet" href="/css/notice-list.css">
+	<link rel="stylesheet" href="/css/notice.css">
 </head>
 <main>
 	<h1>고객센터</h1>
-	<div class="wrap view-size">
+	<div class="wrap  view-size">	
 		<th:block th:replace="~{views/commons/cs-menu}" />
 		<section id="notice">
 			<h1>공지사항</h1>
 			<div class="wrap">
+				<div class="sub flex around">
+					<a href="./1">전체 공지</a>
+					<a href="./2">영화관 공지</a>
+				</div>
+				<form class="search-form " action="#" method="get">
+					<select>
+						<option>제목</option>
+						<option>내용</option>
+						<option>제목+내용</option>
+					</select>
+					<input type="text" placeholder="검색어를 입력해주세요.">
+					<button type="submit">검색</button>
+				</form>
 				<ul>
-					<li>				
-					<span>번호</span>
-					<span>구분</span>
-					<span>제목</span>
-					<span>등록일</span>
+					<li class="flex tit">
+						<span>번호</span>
+						<span>구분</span>
+						<span>제목</span>
+						<span>등록일</span>
 					</li>
-					<li th:each="dto:${list}" th:classappend="${dto.fixed}? 'fixed-color'">
-					<span th:text="${dto.fixed} ?'!':${dto.no}" class="no">번호</span>
-					<span th:text="${dto.division}">구분</span>
-					<span th:text="${dto.title}">제목</span>
-					<span th:text="${dto.updatedAt}">등록일</span>
+					<li class="flex list" th:each="dto:${list}" th:classappend="${dto.fixed}? 'fixed-color'" >
+						<span th:text="${dto.fixed} ? '❗' : ${dto.no} " class="no">번호</span>
+						<span th:text="${dto.division}">구분</span>
+						<span>
+							<a th:text="${dto.title}">제목</a>
+						</span>
+						<span th:text="${dto.updatedAt.toLocalDate}">등록일</span>
 					</li>
 				</ul>
 			</div>
 		</section>
 	</div>
+	
 </main>
-
 </html>

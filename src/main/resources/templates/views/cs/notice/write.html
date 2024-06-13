@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{views/commons/layout :: layout( ~{::main}, ~{::head}) }">
+<head>
+	<link rel="stylesheet" href="/css/notice.css">
+</head>
+<main>
+	<h1>고객센터</h1>
+	<div class="wrap  view-size">
+	
+		<h2>공지사항 등록</h2>
+		<form action="/cscenter/notices" method="post">
+			<ul>
+				<li>
+					<b>구분 : </b>
+					<select name="division">
+						<option value="전체">전체</option>
+						<option value="영화관">영화관</option>
+					</select>
+				</li>
+				<li>
+					<b>고정여부</b>
+					<input type="radio" id="r1" name="fixed" value="1"><label for="r1">고정함</label>
+					<input type="radio" id="r2" name="fixed" value="0" checked="checked"><label for="r2">고정안함</label>
+				</li>
+				<li>
+					<b>제목 : </b>
+					<input type="text" placeholder="제목입력" name="title" required="required">
+				</li>
+				<li>
+					<b>내용</b>
+					<br>
+					<textarea name="content" placeholder="내용을 입력하세요" required="required"></textarea>
+				</li>
+				<li>
+					<button type="submit">공지등록</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+	
+</main>
+</html>
