@@ -4,6 +4,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import com.green.domain.dto.NoticeDetailDTO;
 import com.green.domain.dto.NoticeListDTO;
+import com.green.domain.dto.NoticeUpdateDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -49,6 +50,14 @@ public class NoticeEntity extends BaseEntity {
 		return this;
 	}
 	
+	//제목 or 내용 수정
+	public NoticeEntity update(NoticeUpdateDTO dto) {
+		this.title=dto.getTitle();
+		this.content=dto.getContent();
+		return this;
+		
+	}
+	
 	
 	//편의메소드 매핑하기위한 메소드
 	public NoticeListDTO toNoticeListDTO() {
@@ -72,4 +81,5 @@ public class NoticeEntity extends BaseEntity {
 				.updatedAt(updatedAt)
 				.build();
 	}
+	
 }

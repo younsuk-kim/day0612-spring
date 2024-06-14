@@ -5,7 +5,8 @@
 </head>
 <main>
 	<h1>고객센터</h1>
-	<div class="wrap  view-size">	
+	<div class="wrap  view-size">
+		
 		<th:block th:replace="~{views/commons/cs-menu}" />
 		<section id="notice">
 			<h1>공지사항</h1>
@@ -34,7 +35,7 @@
 						<span th:text="${dto.fixed} ? '❗' : ${dto.no} " class="no">번호</span>
 						<span th:text="${dto.division}">구분</span>
 						<span>
-							<a th:text="${dto.title}">제목</a>
+							<a  th:href="|/cscenter/notices/${dto.no}|" th:text="${dto.title}">제목</a>
 						</span>
 						<span th:text="${dto.updatedAt.toLocalDate}">등록일</span>
 					</li>
